@@ -13,7 +13,9 @@ async function isAuthenticated(req, res, next) {
           .json({ success: false, error: 'Unauthenticated' });
       } else {
         req.jwt = jwt.verify(authorization[1], secret);
-        req.user = await User.findOne({ email: req.jwt.email });
+        req.user = await User.findOne({ email: req.jwt.email }).select(
+          '-password'
+        );
         if (!req.user) {
           return res
             .status(403)
