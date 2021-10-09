@@ -1,9 +1,9 @@
 import axios from 'axios'
 import * as APIPaths from '../utils/apiPaths'
 
-const baseUrl = 'http://localhost:4000'
+const baseUrl = 'http://localhost:3003'
 
-export const login = async payload => {
+export const login = payload => {
   return axios
     .post(baseUrl + APIPaths.login, payload)
     .then(response => response.data)
@@ -16,7 +16,7 @@ export const login = async payload => {
     )
 }
 
-export const signup = async payload => {
+export const signup = payload => {
   return axios
     .post(baseUrl + APIPaths.signup, payload)
     .then(response => response.data)
@@ -29,7 +29,7 @@ export const signup = async payload => {
     )
 }
 
-export const me = async () => {
+export const me = () => {
   const token = localStorage.getItem('authToken')
   return axios
     .get(baseUrl + APIPaths.me, {
