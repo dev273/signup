@@ -12,13 +12,14 @@ import {
   useUpdateAuthenticatedUser,
 } from '../../providers/AuthProvider'
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
   },
   box: {
     flexGrow: 1,
   },
+  appBarSpacer: theme.mixins.appBarSpacer,
 }))
 
 export default function Navbar() {
@@ -61,6 +62,7 @@ export default function Navbar() {
           )}
         </Toolbar>
       </AppBar>
+      <div className={classes.appBarSpacer}></div>
     </div>
   )
 }
